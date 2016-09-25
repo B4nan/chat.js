@@ -1,0 +1,7 @@
+/**
+ * @class RoomController
+ */
+
+module.exports = {
+
+};

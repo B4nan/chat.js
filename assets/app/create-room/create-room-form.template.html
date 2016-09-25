@@ -1,0 +1,12 @@
+<div class="col-md-4 col-md-offset-4">
+  <form ng-submit="$ctrl.submit()" class="form-horizontal">
+    <div class="form-group">
+      <input ng-model="$ctrl.form.name" type="text" autofocus placeholder="Name" name="name" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success">
+      <span ng-show="! $ctrl.form.loading">Create</span>
+      <span ng-show="$ctrl.form.loading" class="fa fa-spinner"></span>
+      <span ng-show="$ctrl.form.loading">Creating...</span>
+    </button>
+  </form>
+</div>

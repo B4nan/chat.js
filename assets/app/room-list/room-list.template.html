@@ -1,0 +1,27 @@
+<a ui-sref="site.create-room" class="admin-only btn btn-info btn-lg pull-right">Add new room</a>
+
+<h1>Rooms</h1>
+
+<table class="table table-condensed table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Author</th>
+    <th width="250">Action</th>
+  </tr>
+  <tr ng-if="$ctrl.loading">
+    <td colspan="4" class="text-center">loading</td>
+  </tr>
+  <tr ng-if="! $ctrl.loading && $ctrl.rooms.length === 0">
+    <td colspan="4" class="text-center">No rooms found, <a ui-sref="site.create-room">create one</a>!</td>
+  </tr>
+  <tr ng-repeat="room in $ctrl.rooms">
+    <td>{{room.id}}</td>
+    <td>{{room.name}}</td>
+    <td>{{room.author.name}}</td>
+    <td>
+      <a ui-sref="site.roomChat({room: room.id})" class="btn btn-info">Show</a>
+      <a ng-click="$ctrl.delete(room.id, $index)" confirm-click class="btn btn-danger">Delete</a>
+    </td>
+  </tr>
+</table>

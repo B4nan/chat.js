@@ -1,0 +1,12 @@
+<div class="btn-toolbar pull-right">
+  <a ui-sref="site.users" class="btn btn-default btn-lg">Back</a>
+  <a ui-sref="site.editUser({user: $ctrl.user.id})" class="btn btn-warning btn-lg">Edit</a>
+</div>
+
+<h1>User detail <strong>{{$ctrl.user.name}}</strong></h1>
+
+<ul>
+  <li><strong>E-mail:</strong> {{$ctrl.user.email}}</li>
+  <li><strong>Roles:</strong> {{$ctrl.user.roles.join(', ')}}</li>
+  <li><strong>Last login:</strong> {{$ctrl.user.lastLogin|date}}</li>
+</ul>

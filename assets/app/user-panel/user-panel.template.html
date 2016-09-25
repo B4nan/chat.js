@@ -1,0 +1,8 @@
+<div ng-show="$ctrl.user.isAuthenticated()" class="navbar-right">
+  <p class="navbar-text">
+    <img ng-src="{{$ctrl.identity.gravatarUrl}}s=40" width="20" alt="Gravatar">
+    {{$ctrl.identity.name}} [{{$ctrl.identity.email}}]
+  </p>
+  <a href="#sign-out" ng-click="$ctrl.signOut()" class="btn btn-default navbar-btn">sign out</a>
+</div>
+<sign-in-form ng-if="! $ctrl.user.isAuthenticated()"></sign-in-form>

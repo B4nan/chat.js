@@ -1,0 +1,5 @@
+<ul class="nav navbar-nav">
+  <li ng-if="$ctrl.user.isAuthenticated()" ui-sref-active="active"><a ui-sref="site.dashboard">Dashboard</a></li>
+  <li ng-if="$ctrl.user.isAuthenticated()" ui-sref-active="active"><a ui-sref="site.rooms">Rooms</a></li>
+  <li ng-if="$ctrl.user.isInRole('Admin')" ui-sref-active="active"><a ui-sref="site.users">Users</a></li>
+</ul>

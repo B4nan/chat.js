@@ -1,0 +1,29 @@
+<a ui-sref="site.createUser" class="admin-only btn btn-info btn-lg pull-right">Add new user</a>
+
+<h1>Users</h1>
+
+<table class="table table-condensed table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>E-mail</th>
+    <th>Roles</th>
+    <th>Last login</th>
+    <th width="250">Action</th>
+  </tr>
+  <tr ng-if="$ctrl.loading">
+    <td colspan="5" class="text-center">loading</td>
+  </tr>
+  <tr ng-repeat="user in $ctrl.users">
+    <td>{{user.id}}</td>
+    <td>{{user.name}}</td>
+    <td>{{user.email}}</td>
+    <td>{{(user.roles || ['User']).join(', ')}}</td>
+    <td>{{user.lastLogin|date}}</td>
+    <td>
+      <a ui-sref="site.userDetail({user: user.id})" class="btn btn-info">Show</a>
+      <a ui-sref="site.editUser({user: user.id})" class="btn btn-warning">Edit</a>
+      <a ng-click="$ctrl.delete(user.id, $index)" confirm-click class="btn btn-danger">Delete</a>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chat" ng-cloak class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%=typeof title == 'undefined' ? 'Chat.js' : title%></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/bower_components/angular-toastr/dist/angular-toastr.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/screen.css">
+    <!--STYLES END-->
+    <script type="text/javascript">
+      var authenticated = <%- JSON.stringify(session.authenticated || false) %>;
+    </script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Chat.js</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <navigation></navigation>
+          <user-panel></user-panel>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid" style="margin-top: 80px">
+      <%- body %>
+    </div>
+
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="/bower_components/checklist-model/checklist-model.js"></script>
+    <script src="/js/dependencies/compareTo.module.js"></script>
+    <script src="/app/app.module.js"></script>
+    <script src="/app/create-room/create-room.module.js"></script>
+    <script src="/app/create-user/create-user.module.js"></script>
+    <script src="/app/edit-user/edit-user.module.js"></script>
+    <script src="/app/homepage/homepage.module.js"></script>
+    <script src="/app/navigation/navigation.module.js"></script>
+    <script src="/app/room-chat/room-chat.module.js"></script>
+    <script src="/app/room-list/room-list.module.js"></script>
+    <script src="/app/sign-in/sign-in.module.js"></script>
+    <script src="/app/sign-up/sign-up.module.js"></script>
+    <script src="/app/user-detail/user-detail.module.js"></script>
+    <script src="/app/user-list/user-list.module.js"></script>
+    <script src="/app/user-panel/user-panel.module.js"></script>
+    <script src="/app/utils/authorizator.service.js"></script>
+    <script src="/app/utils/user.service.js"></script>
+    <script src="/app/utils/confirm.directive.js"></script>
+    <script src="/app/create-room/create-room-form.component.js"></script>
+    <script src="/app/create-user/create-user-form.component.js"></script>
+    <script src="/app/edit-user/edit-user-form.component.js"></script>
+    <script src="/app/homepage/homepage.component.js"></script>
+    <script src="/app/navigation/navigation.component.js"></script>
+    <script src="/app/room-chat/room-chat.component.js"></script>
+    <script src="/app/room-list/room-list.component.js"></script>
+    <script src="/app/sign-in/sign-in-form.component.js"></script>
+    <script src="/app/sign-up/sign-up-form.component.js"></script>
+    <script src="/app/user-detail/user-detail.component.js"></script>
+    <script src="/app/user-list/user-list.component.js"></script>
+    <script src="/app/user-panel/user-panel.component.js"></script>
+    <script src="/app/app.config.js"></script>
+    <!--SCRIPTS END-->
+  </body>
+</html>

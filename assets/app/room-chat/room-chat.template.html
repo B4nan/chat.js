@@ -1,0 +1,38 @@
+<a ui-sref="site.rooms" class="btn btn-default btn-lg pull-right">Back</a>
+
+<h1>Chat room <strong>{{$ctrl.room.name}}</strong></h1>
+
+<form ng-submit="$ctrl.sendMessage($ctrl.message)" name="form" class="form form-vertical" style="margin-top: 50px;">
+  <table class="table table-condensed">
+    <tr>
+      <td>
+        <textarea id="chat-message" ng-model="$ctrl.message.text" required class="form-control" autofocus placeholder="Send a message..." name="text"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input ng-disabled="$ctrl.loadingForm || form.$invalid" type="submit" value="Send Message" class="col-md-offset-10 col-md-2 btn btn-success">
+      </td>
+    </tr>
+  </table>
+</form>
+
+<table class="table table-condensed table-striped">
+  <tr>
+    <th width="10%">Created</th>
+    <th width="10%">From</th>
+    <th width="80%">Text</th>
+  </tr>
+  <tr ng-if="$ctrl.loading">
+    <td colspan="3" class="text-center">loading</td>
+  </tr>
+  <tr ng-if="! $ctrl.loading && $ctrl.messages.length === 0">
+    <td colspan="3" class="text-center">No messages found in this room</td>
+  </tr>
+  <tr ng-repeat="message in $ctrl.messages" class="message">
+    <td>{{message.createdAt|date: 'd.M.yyyy HH:mm'}}</td>
+    <td>{{message.from.name}}</td>
+    <td>{{message.text}}</td>
+  </tr>
+</table>
+

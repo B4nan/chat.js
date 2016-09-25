@@ -1,0 +1,20 @@
+<div class="col-md-4 col-md-offset-4">
+  <form ng-submit="$ctrl.submit()" class="form-horizontal">
+    <div class="form-group">
+      <input ng-model="$ctrl.form.name" type="text" autofocus required placeholder="Name" name="name" class="form-control">
+    </div>
+    <div class="form-group">
+      <input ng-model="$ctrl.form.email" type="email" required placeholder="E-mail" name="email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label class="checkbox-inline" ng-repeat="role in $ctrl.roles">
+        <input type="checkbox" name="roles[]" checklist-value="role" checklist-model="$ctrl.form.roles"> {{role}}
+      </label>
+    </div>
+    <button type="submit" class="btn btn-success">
+      <span ng-show="! $ctrl.form.loading">Update</span>
+      <span ng-show="$ctrl.form.loading" class="fa fa-spinner"></span>
+      <span ng-show="$ctrl.form.loading">Updating...</span>
+    </button>
+  </form>
+</div>
