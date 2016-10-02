@@ -18,6 +18,10 @@ module.exports = {
     room: {
       model: 'Room',
       required: true
+    },
+    files: {
+      collection: 'MessageFile',
+      via: 'message'
     }
   }
 

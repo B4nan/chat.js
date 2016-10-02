@@ -1,1 +1,1 @@
-angular.module('roomChat', ['ngAnimate']);
+angular.module('roomChat', ['ngAnimate', 'ngFileUpload']);

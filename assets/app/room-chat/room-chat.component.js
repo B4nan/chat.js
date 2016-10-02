@@ -2,8 +2,8 @@ var roomChat = angular.module('roomChat');
 
 roomChat.component('roomChat', {
   templateUrl: 'app/room-chat/room-chat.template.html',
-  controller: ['$scope', '$http', '$stateParams', '$window', 'user',
-    function ($scope, $http, $stateParams, $window, user) {
+  controller: ['$scope', '$http', '$stateParams', '$window', 'user', 'Upload',
+    function ($scope, $http, $stateParams, $window, user, Upload) {
       var self = this;
       self.loading = true;
       var room = $stateParams.room;
@@ -25,6 +25,23 @@ roomChat.component('roomChat', {
         self.loading = false;
       });
 
+      self.uploadFiles = function (files) {
+        self.loadingForm = false;
+        if (files && files.length) {
+          var fd = new FormData();
+          angular.forEach(files, function (file) {
+            fd.append('files', file);
+          });
+          $http.post('/api/message/uploadFiles', fd, {
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
+          }).success(function (data) {
+            self.loadingForm = false;
+            self.files = data.files;
+          });
+        }
+      };
+
       self.loadingForm = false;
       self.sendMessage = function (message) {
         self.loadingForm = true;
@@ -32,7 +49,8 @@ roomChat.component('roomChat', {
           io.socket.post('/api/message', {
             room: room,
             from: identity,
-            text: message.text
+            text: message.text,
+            files: self.files
           }, function (data) {
             data.from = identity;
             self.message.text = '';

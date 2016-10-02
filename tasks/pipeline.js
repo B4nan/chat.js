@@ -14,6 +14,7 @@ var jsFilesToInject = [
   'bower_components/angular-animate/angular-animate.js',
   'bower_components/angular-toastr/dist/angular-toastr.tpls.js',
   'bower_components/checklist-model/checklist-model.js',
+  'bower_components/ng-file-upload/ng-file-upload.js',
   'bower_components/bootstrap/dist/js/boostrap.js',
   'js/dependencies/**/*.js',
   'app/**/*.module.js',

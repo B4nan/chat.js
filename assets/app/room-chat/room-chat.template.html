@@ -2,20 +2,17 @@
 
 <h1>Chat room <strong>{{$ctrl.room.name}}</strong></h1>
 
-<form ng-submit="$ctrl.sendMessage($ctrl.message)" name="form" class="form form-vertical" style="margin-top: 50px;">
-  <table class="table table-condensed">
-    <tr>
-      <td>
-        <textarea id="chat-message" ng-model="$ctrl.message.text" required class="form-control" autofocus placeholder="Send a message..." name="text"></textarea>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <input ng-disabled="$ctrl.loadingForm || form.$invalid" type="submit" value="Send Message" class="col-md-offset-10 col-md-2 btn btn-success">
-      </td>
-    </tr>
-  </table>
-</form>
+<div class="col-md-12">
+  <form ng-submit="$ctrl.sendMessage($ctrl.message)" name="form" class="form form-horizontal" style="margin-top: 50px;">
+    <div class="form-group">
+      <textarea id="chat-message" ng-model="$ctrl.message.text" required class="form-control" autofocus placeholder="Send a message..." name="text"></textarea>
+    </div>
+    <div class="form-group">
+      <div ngf-select="$ctrl.uploadFiles($files)" class="btn btn-default col-md-2" ng-model="$ctrl.files" multiple>Select files</div>
+      <input ng-disabled="$ctrl.loadingForm || form.$invalid" type="submit" value="Send Message" class="col-md-offset-8 col-md-2 btn btn-success">
+    </div>
+  </form>
+</div>
 
 <table class="table table-condensed table-striped">
   <tr>
@@ -32,7 +29,12 @@
   <tr ng-repeat="message in $ctrl.messages" class="message">
     <td>{{message.createdAt|date: 'd.M.yyyy HH:mm'}}</td>
     <td>{{message.from.name}}</td>
-    <td>{{message.text}}</td>
+    <td>
+      {{message.text}}
+      <div ng-if="message.files" class="btn-toolbar">
+        <a class="btn btn-xs btn-default" ng-repeat="file in message.files" href="/api/message/download?id={{file.id}}">{{file.name}}</a>
+      </div>
+    </td>
   </tr>
 </table>
 
